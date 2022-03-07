@@ -1,5 +1,6 @@
 ## Diverse Infura Examples
-- SendingTransaction Using **NodeJS** With **Ethers.js** + **Infura**
+- SendingTransaction Using **NodeJS** with **Ethers.js** + **Infura**
+- ARDX Contract Events - Connect to Smart Contract and Query Smart Contract Events with **Ethers.js** + **Infura**
 ---
 ### Infura
 
