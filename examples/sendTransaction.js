@@ -3,7 +3,7 @@ require('dotenv').config({path:'../.env'})
 
 const { ethers } = require("ethers");
 
-const NETWORK = process.env.NETWORK
+const NETWORK = process.env.ROPSTEN_NETWORK
 const INFURA_KEY = process.env.INFURA_KEY
 const PRIVATE_KEY = process.env.PRIVATE_KEY
 const RECIEVE_ADDRESS = process.env.SEND_TRANSACTION_EXAMPLE_RECIEVE_ADDRESS
