@@ -56,7 +56,7 @@ function validateParameters(){
   }
 
   if(INFURA_KEY === ""){
-    console.log("INFURA_KEY Is Empty")
+    console.log("Infura Key Is Empty")
     process.exit(1)
   }
 
