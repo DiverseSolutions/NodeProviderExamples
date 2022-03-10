@@ -1,6 +1,7 @@
-require('dotenv').config({path:'../.env'})
+require('dotenv').config({path: `${__dirname}/../.env`})
 
 const { ethers } = require("ethers")
+const { validate } = require("./utils/validateParameter.js")
 const ardx_abi = require("./abi/ardx.json")
 
 const NETWORK = process.env.MAIN_NETWORK
@@ -8,9 +9,10 @@ const INFURA_KEY = process.env.INFURA_KEY
 const ARDX_ETHEREUM_ADDRESS = process.env.ARDX_CONTRACT_EVENTS_EXAMPLE_ARDX_ETHEREUM_ADDRESS
 
 
+validate(NETWORK,"Network")
+validate(INFURA_KEY,"Infura Key")
+validate(ARDX_ETHEREUM_ADDRESS,"Ardx Address")
 
-
-validateParameters()
 getAllArdxTransactions()
 
 
@@ -47,23 +49,3 @@ async function getAllArdxTransactions(){
   // console.log(filterBurnData)
   console.log(`ARDX Contract Burn Filter Length : ${filterBurnData.length}`)
 }
-
-
-function validateParameters(){
-  if(NETWORK === ""){
-    console.log("Network Is Empty")
-    process.exit(1)
-  }
-
-  if(INFURA_KEY === ""){
-    console.log("Infura Key Is Empty")
-    process.exit(1)
-  }
-
-  if(ARDX_ETHEREUM_ADDRESS === ""){
-    console.log("ARDX Address Empty")
-    process.exit(1)
-  }
-
-}
-

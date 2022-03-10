@@ -1,7 +1,8 @@
-require('dotenv').config({path:'../.env'})
+require('dotenv').config({path: `${__dirname}/../.env`})
 
 
 const { ethers } = require("ethers")
+const { validate } = require("./utils/validateParameter.js")
 const bip39 = require('bip39')
 
 
@@ -10,7 +11,9 @@ const NETWORK = process.env.MAIN_NETWORK
 const INFURA_KEY = process.env.INFURA_KEY
 
 
-validateParameters()
+validate(NETWORK,"Network")
+validate(INFURA_KEY,"Infura Key")
+
 createAccount()
 
 async function createAccount(){
@@ -38,17 +41,3 @@ async function createAccount(){
 
 }
 
-
-
-function validateParameters(){
-  if(NETWORK === ""){
-    console.log("Network Is Empty")
-    process.exit(1)
-  }
-
-  if(INFURA_KEY === ""){
-    console.log("Infura Key Is Empty")
-    process.exit(1)
-  }
-
-}

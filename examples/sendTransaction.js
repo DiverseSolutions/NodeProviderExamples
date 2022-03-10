@@ -1,7 +1,8 @@
-require('dotenv').config({path:'../.env'})
+require('dotenv').config({path: `${__dirname}/../.env`})
 
 
 const { ethers } = require("ethers");
+const { validate } = require("./utils/validateParameter.js")
 
 const NETWORK = process.env.ROPSTEN_NETWORK
 const INFURA_KEY = process.env.INFURA_KEY
@@ -11,13 +12,16 @@ const AMOUNT_IN_ETHER = process.env.SEND_TRANSACTION_EXAMPLE_RECIEVE_AMOUNT_IN_E
 
 
 
+validate(NETWORK,"Network")
+validate(INFURA_KEY,"Infura Key")
+validate(PRIVATE_KEY,"Private Key")
+validate(RECIEVE_ADDRESS,"Recieve Address")
+validate(AMOUNT_IN_ETHER,"Amount In Ether")
 
-validateParameters()
+
+
+
 sendTransactionWithInfura(NETWORK,INFURA_KEY,PRIVATE_KEY,RECIEVE_ADDRESS,AMOUNT_IN_ETHER)
-
-
-
-
 
 
 async function sendTransactionWithInfura(network,infura_key,private_key,recieve_address,amount){
